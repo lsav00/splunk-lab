@@ -2,7 +2,7 @@
 # download_botsv3.sh
 
 TARGET_DIR="/opt/splunk/etc/apps"
-BOTS_URL="https://github.com/splunk/botsv3/releases/download/v3/botsv3.tgz"
+BOTS_URL="https://botsdataset.s3.amazonaws.com/botsv3/botsv3_data_set.tgz"
 
 echo "[+] Downloading BOTS v3 dataset..."
 wget -O /tmp/botsv3.tgz "$BOTS_URL"
