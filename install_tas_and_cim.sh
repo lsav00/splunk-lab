@@ -1,21 +1,30 @@
 #!/bin/bash
-# install_tas_and_cim.sh
 
-APP_DIR="/opt/splunk/etc/apps"
-declare -A apps=(
-  ["Splunk_SA_CIM"]="1621"
-  ["Splunk_TA_windows"]="742"
-  ["Splunk_TA_microsoft_cloudservices"]="3110"
-  ["Splunk_TA_o365"]="4055"
-  ["Splunk_TA_cisco_asa"]="1620"
-  ["Splunk_TA_symantec_ep"]="2772"
-)
+# Define paths
+SOURCE_DIR="/splunk-lab/splunk-lab/splunk-apps"
+SPLUNK_HOME="/opt/splunk"
+DEST_DIR="$SPLUNK_HOME/etc/apps"
 
-for app in "${!apps[@]}"; do
-  echo "[+] Installing $app..."
-  wget --content-disposition "https://splunkbase.splunk.com/app/${apps[$app]}/download" -P /tmp
-  tar -xvzf /tmp/${app}*.tgz -C "$APP_DIR"
+# Create destination directory if it doesn't exist
+mkdir -p "$DEST_DIR"
+
+# Move and extract all .tgz files
+for file in "$SOURCE_DIR"/*.tgz; do
+    if [ -f "$file" ]; then
+        echo "Processing $file..."
+
+        # Copy or move file to apps directory
+        cp "$file" "$DEST_DIR/"
+
+        # Change to apps directory
+        cd "$DEST_DIR" || exit
+
+        # Extract and clean up
+        tar -xvzf "$(basename "$file")"
+        rm -f "$(basename "$file")"
+
+        echo "Installed $(basename "$file")"
+    else
+        echo "No .tgz files found in $SOURCE_DIR"
+    fi
 done
-
-echo "[+] Restarting Splunk to apply apps..."
-/opt/splunk/bin/splunk restart
