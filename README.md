@@ -52,6 +52,37 @@ Using SSH keys instead of passwords is recommended for improved security and eas
 
 ### Example Resource Group Name
 
+## Azure VM Notes
+
+This lab was built using the following Azure configuration:
+
+- VM Size: **D4alds\_v6**
+- Operating System: **Ubuntu Server 24.04 LTS**
+- Authentication: **SSH Key Authentication**
+- OS Disk: **64 GB Minimum**
+
+### Splunk Package Selection
+
+Because Ubuntu Server is a Debian\-based Linux distribution, the recommended Splunk installer package is:
+
+**.deb**
+
+Package selection guide:
+
+- **.deb** → Ubuntu, Lubuntu, Debian
+- **.rpm** → Red Hat, Rocky Linux, AlmaLinux, CentOS
+- **.tgz** → Manual installation on supported Linux distributions
+
+When downloading Splunk Enterprise from Splunk Downloads, select the **64\-bit Linux .deb package** for this lab environment.
+
+Example:
+
+splunk\-x.x.x\-linux\-amd64.deb
+
+Using the native package format simplifies installation and aligns with Ubuntu package management.
+
+
+
 ```text
 rg-splunk-claude-lab
 ```
