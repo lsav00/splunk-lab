@@ -1,17 +1,22 @@
 ## Download Splunk
 
-1. Sign in to Splunk.com.
-2. Navigate to Splunk Enterprise Downloads.
-3. Select the correct package for your OS.
-4. Click **Copy wget link**.
-5. Paste and run the command on your Azure VM.
+After cloning this repo into your machine, log in to Splunk and obtain the download command for the version of Splunk Enterprise you want to install.
+
+Copy the entire wget command and paste it into splunk\_installer.txt.
 
 Example:
 
-```bash
-wget -O splunk-10.x.x-linux-amd64.deb "<download-url>"
-```
+wget [https://download.splunk.com/products/splunk/releases/10.0.0/linux/splunk\-10.0.0\-e8eb0c4654f8\-linux\-amd64.tgz](https://download.splunk.com/products/splunk/releases/10.0.0/linux/splunk-10.0.0-e8eb0c4654f8-linux-amd64.tgz)
 
+Run the download script:
+
+chmod \+x download\_splunk.sh
+
+./download\_splunk.sh
+
+The script reads the download information from splunk\_installer.txt, downloads the installer, and stores it locally for installation.
+
+To use a different Splunk version, replace the existing wget command in splunk\_installer.txt with the command provided by Splunk for the desired release.
 
 
 ## Recommended Azure VM Configuration
