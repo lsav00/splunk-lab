@@ -14,6 +14,3 @@ Splunk Enterprise downloads require access to the Splunk download portal.
 Example URL:
 
 [https://download.splunk.com/products/splunk/releases/10.6.1.1/linux/splunk\-10.6.1.1\-b2ae2962645c\-linux\-amd64.deb](https://download.splunk.com/products/splunk/releases/10.6.1.1/linux/splunk-10.6.1.1-b2ae2962645c-linux-amd64.deb)
-
-This approach avoids storing Splunk credentials in scripts and remains compatible when Splunk updates its download portal.
-
